@@ -1,0 +1,232 @@
+<!DOCTYPE html> skin
+<head>
+	<title>Skin Desease Detector</title>
+	 <!-- add bootstrap css file -->
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+
+</head>
+<body>
+  <!-- navbar -->
+
+  <nav class="navbar navbar-expand-lg fixed-top ">
+	  <a class="navbar-brand" href="#">Home</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+
+	  <div class="collapse navbar-collapse " id="navbarSupportedContent">
+	    <ul class="navbar-nav mr-4">
+	      
+	      <li class="nav-item">
+	        <a class="nav-link" data-value="about" href="#">About</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link " data-value="program" href="#">Program</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link " data-value="team" href="#">
+	        Team</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link " data-value="contact" href="#">Contact</a>
+	      </li>
+	    </ul>
+	    
+	  </div>
+</nav>
+<!-- header -->
+<header class="header ">
+  <div class="overlay"></div>
+   <div class="container">
+   	  <div class="description ">
+  	<h1>
+  		Hello ,Welcome To Skin Desease Detector
+  		<p>
+			Skin health is one of the most valuable assets in the human body, identify your skin problems more easily!</p>
+  	</h1>
+  </div>
+   </div>
+  
+</header>
+
+<!-- about section -->
+<div class="about" id="about">
+	<div class="container">
+	  <h1 class="text-center">About Us</h1>
+		<div class="row">
+			<div class="col-lg-4 col-md-4 col-sm-12">
+				<img src="{{ url_for('static', filename='images/brain.png') }}" class="img-fluid">
+			</div>
+			<div class="col-lg-8 col-md-8 col-sm-12 desc">
+			  
+				<h3>Last Project of AI for Jobs</h3>
+				<p>
+					Artificial intelligence is an option in facilitating the field of health services, one of which is as a detector for simple skin diseases based on visual records. This program was built as a contribution of artificial intelligence technology to the field of skin health services.
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- program -->
+<div class="program" id="program">
+     <h1 class="text-center">Program</h1>
+	<div class="container">
+		
+	</div>
+</div>
+        <section
+            class="
+                flex
+                justify-center
+                items-center
+                w-screen
+                h-screen
+                bg-indigo-500
+            "
+        >
+            <main
+                class="
+                    flex flex-col
+                    justify-center
+                    items-center
+                    p-16
+                    bg-white
+                    rounded-lg
+                "
+            >
+                <h1 class="text-3xl text-bold">penyakit kulit</h1>
+
+                {% if uploaded_image %}
+                <img
+                    src="{{ url_for('send_uploaded_image', filename=uploaded_image) }}"
+                    class="mt-8 mb-4 h-48 border-8 border-gray-200 rounded-md"
+                />
+                {% else %}
+                <div
+                    class="
+                        flex
+                        justify-center
+                        items-center
+                        my-8
+                        w-48
+                        h-48
+                        border-8 border-gray-200
+                        rounded-md
+                    "
+                >
+                    <p class="text-center">
+                        Masukkan gambar
+                    </p>
+                </div>
+                {% endif %} {% if prediction %}
+                <p class="mb-8">Hasil Prediksi: {{prediction}}</p>
+                {% endif %}
+
+                <form
+                    method="post"
+                    enctype="multipart/form-data"
+                    class="flex flex-col"
+                >
+                    <input
+                        type="file"
+                        name="image"
+                        class="
+                            mb-4
+                            p-4
+                            border-8 border-gray-200
+                            rounded-md
+                            bg-gray-100
+                        "
+                    />
+                    <button
+                        type="submit"
+                        class="p-4 bg-indigo-500 text-white rounded-md"
+                    >
+                        Prediksi Gambar
+                    </button>
+                </form>
+            </main>
+        </section>
+
+
+<!-- Team section -->
+<div class="team" id="team">
+	<div class="container">
+	   <h1 class="text-center">Our Team</h1>
+		<div class="row">
+			<div class="col-lg-3 col-md-3 col-sm-12 item">
+				<img src="{{ url_for('static', filename='images/nabila.jpg') }}">
+				<div class="des">
+				 	Nabila
+				 </div>
+				<span class="text-muted"></span>
+			</div>
+			<div class="col-lg-3 col-md-3 col-sm-12 item">
+				<img src="{{ url_for('static', filename='images/Yoel.jpg') }}" class="img-fluid" alt="team" height="235" width="235">
+				<div class="des">
+				 	 Yoel
+				 </div>
+				<span class="text-muted"></span>
+			</div>
+			<div class="col-lg-3 col-md-3 col-sm-12 item">
+				<img src="{{ url_for('static', filename='images/asfit.jpg') }}" class="img-fluid" alt="team">
+				<div class="des">
+				 	Asfit 
+				 </div>
+				<span class="text-muted"></span>
+			</div>
+			<div class="col-lg-3 col-md-3 col-sm-12 item">
+				<img src="{{ url_for('static', filename='images/saufi.jpg') }}" class="img-fluid" alt="team">
+				 <div class="des">
+				 	Saufi
+				 </div>
+				<span class="text-muted"></span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Contact form -->
+<div class="contact-form" id="contact">
+	<div class="container">
+		<form>
+			<div class="row">
+				<div class="col-lg-4 col-md-4 col-sm-12">
+				  <h1>Get in Touch</h1>	
+				</div>
+				<div class="col-lg-8 col-md-8 col-sm-12 right">
+				   <div class="form-group">
+				   	 <input type="text" class="form-control form-control-lg" placeholder="Your Name" name="">
+				   </div>
+				   <div class="form-group">
+				   	 <input type="email" class="form-control form-control-lg" placeholder="YourEmail@email.com" name="email">
+				   </div>
+				   <div class="form-group">
+				   	 <textarea class="form-control form-control-lg">
+				   	 	
+				   	 </textarea>
+				   </div>
+				   <input type="submit" class="btn btn-secondary btn-block" value="Send" name="">
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+	
+	<footer class="footer mt-auto py-3" style="background:#0e9419;">
+	<div class="container">
+		<p class="text-center text-white lead">Orbit for Jobs <script type="text/javascript">
+			document.write(new Date().getFullYear());
+		  </script>.</p>
+	  
+	</div>
+  </footer>
+<!-- add Javasscript file from js file -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js.css') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+</html>
